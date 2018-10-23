@@ -22,23 +22,12 @@
 ##  If this doesn't work for you, just edit this file as appropriate.
 ######################################################################
 
+BASE="/dls_sw/apps/demeter/0.9.25"
 
-if [ $PERL5LIB ]
-then
-  PLIB=`echo $PERL5LIB | sed ' s/\([^:]*\):.*/\1/'`
-elif [ $PERLLIB ]
-then
-  PLIB=`echo $PERLLIB | sed ' s/\([^:]*\):.*/\1/'`
-else
-  echo "Neither PERL5LIB nor PERLLIB are set.  Private installation halting."
-  exit
-fi
-
-
-./Build --install_path lib=$PLIB \
-        --install_path arch=$PLIB \
-        --install_path bin=$HOME/bin \
-        --install_path script=$HOME/bin \
-        --install_path bindoc=`pwd`/man/ \
-        --install_path libdoc=`pwd`/man/ \
+./Build --install_path lib=$BASE/lib \
+        --install_path arch=$BASE/lib \
+        --install_path bin=$BASE/bin \
+        --install_path script=$BASE/bin \
+        --install_path bindoc=$BASE/man/ \
+        --install_path libdoc=$BASE/man/ \
         install
